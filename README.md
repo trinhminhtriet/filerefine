@@ -1,4 +1,4 @@
-# filerefine
+# FileRefine
 
 🧹 FileRefine is a Rust-based CLI tool that renames files in a directory to remove unwanted or problematic characters from filenames.
 
