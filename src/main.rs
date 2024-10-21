@@ -1,4 +1,4 @@
-use detox::{detox_full, parse_args};
+use filerefine::{filerefine_full, parse_args};
 
 fn main() -> Result<(), ()> {
     let args: Vec<String> = std::env::args().collect();
@@ -7,6 +7,6 @@ fn main() -> Result<(), ()> {
         std::process::exit(code);
     }
     let (options, paths_to_check) = parsed_args.unwrap();
-    let result_code = detox_full(&options, paths_to_check);
+    let result_code = filerefine_full(&options, paths_to_check);
     std::process::exit(result_code);
 }

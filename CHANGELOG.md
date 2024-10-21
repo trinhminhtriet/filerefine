@@ -32,6 +32,10 @@ cargo test -- --show-output
 cargo test <test_name>
 ```
 
+## 2024-10-21
+
+- Change name from `Detox` to `FileRefine`
+
 ## 2024-10-12
 
 - Creation of the package

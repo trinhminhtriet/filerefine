@@ -1,4 +1,4 @@
-//! detox is a tool to clean file names.
+//! filerefine is a tool to clean file names.
 
 #![warn(missing_docs)]
 
@@ -417,7 +417,7 @@ fn get_path_of_dir(dir_path: &str) -> Vec<PathBuf> {
 fn show_version() {
     const VERSION: &str = env!("CARGO_PKG_VERSION");
     const AUTHORS: &str = env!("CARGO_PKG_AUTHORS");
-    println!("detox {} by {}", &VERSION, &AUTHORS)
+    println!("filerefine {} by {}", &VERSION, &AUTHORS)
 }
 
 /// Parse the arguments and return the options and the paths to check
@@ -535,7 +535,7 @@ pub fn print_output(
 }
 
 /// Do the program, return the Vector of result
-pub fn detox(
+pub fn filerefine(
     full_options: &OptionnalFields,
     paths_to_check: Vec<PathBuf>,
 ) -> Vec<CustomSingleResult> {
@@ -554,8 +554,8 @@ pub fn detox(
 }
 
 /// main function of the program: clean and print the output
-pub fn detox_full(full_options: &OptionnalFields, paths_to_check: Vec<PathBuf>) -> i32 {
-    let final_res = detox(&full_options, paths_to_check);
+pub fn filerefine_full(full_options: &OptionnalFields, paths_to_check: Vec<PathBuf>) -> i32 {
+    let final_res = filerefine(&full_options, paths_to_check);
     if let Err(code) = print_output(&full_options.verbosity, final_res) {
         return code;
     }

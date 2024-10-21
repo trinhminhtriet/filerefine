@@ -5,10 +5,10 @@ mod tests {
     #[test]
     fn test_parse_args_clean_directory() {
         let dir = "src".to_owned();
-        let vec_args = vec!["detox".to_owned(), dir.clone(), "-j".to_owned()];
-        let res = detox::parse_args(vec_args);
+        let vec_args = vec!["filerefine".to_owned(), dir.clone(), "-j".to_owned()];
+        let res = filerefine::parse_args(vec_args);
         let (options, vect) = res.ok().unwrap();
-        let res_path = detox::detox(&options, vect);
+        let res_path = filerefine::filerefine(&options, vect);
         let number = std::fs::read_dir(dir)
             .ok()
             .unwrap()
@@ -16,9 +16,9 @@ mod tests {
             .count();
         assert_eq!(
             options,
-            detox::OptionnalFields {
-                options: detox::OptionsFields { dry_run: true },
-                verbosity: detox::VerbosityFields {
+            filerefine::OptionnalFields {
+                options: filerefine::OptionsFields { dry_run: true },
+                verbosity: filerefine::VerbosityFields {
                     verbose: false,
                     json: true,
                     json_pretty: false,
@@ -31,7 +31,7 @@ mod tests {
 
     #[test]
     fn test_check_similars_void() {
-        let res = detox::check_similar(vec![], &mut String::new(), false);
+        let res = filerefine::check_similar(vec![], &mut String::new(), false);
         assert_eq!(res, false);
     }
 
@@ -92,20 +92,20 @@ mod tests {
         setup(&dir);
 
         let vec_args = vec![
-            "detox".to_owned(),
+            "filerefine".to_owned(),
             dir.clone(),
             "-j".to_owned(),
             "-d".to_owned(),
         ];
-        let res = detox::parse_args(vec_args);
+        let res = filerefine::parse_args(vec_args);
         let (options, vect) = res.ok().unwrap();
-        let res_path = detox::detox(&options, vect);
+        let res_path = filerefine::filerefine(&options, vect);
 
         assert_eq!(
             options,
-            detox::OptionnalFields {
-                options: detox::OptionsFields { dry_run: false },
-                verbosity: detox::VerbosityFields {
+            filerefine::OptionnalFields {
+                options: filerefine::OptionsFields { dry_run: false },
+                verbosity: filerefine::VerbosityFields {
                     verbose: false,
                     json: true,
                     json_pretty: false,

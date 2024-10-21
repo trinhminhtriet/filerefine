@@ -1,21 +1,21 @@
-# detox
+# filerefine
 
-🧹 Detox is a Rust-based CLI tool that renames files in a directory to remove unwanted or problematic characters from filenames.
+🧹 FileRefine is a Rust-based CLI tool that renames files in a directory to remove unwanted or problematic characters from filenames.
 
 ## 🚀 Installation
 
-To install **detox**, simply clone the repository and follow the instructions below:
+To install **filerefine**, simply clone the repository and follow the instructions below:
 
 ```sh
-git clone https://github.com/trinhminhtriet/detox.git
-cd detox
+git clone https://github.com/trinhminhtriet/filerefine.git
+cd filerefine
 
 cargo install --path .
 
-detox --do my_path
+filerefine --do my_path
 ```
 
-> By default, detox will only print the names that would be renamed. Use the `--do` or `-d` option to actually rename the files.
+> By default, filerefine will only print the names that would be renamed. Use the `--do` or `-d` option to actually rename the files.
 
 ## 💡 Options
 

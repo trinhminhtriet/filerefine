@@ -5,54 +5,54 @@ mod tests {
     #[test]
     fn test_print_output() {
         let args = vec![
-            detox::OptionnalFields {
-                options: detox::OptionsFields { dry_run: false },
-                verbosity: detox::VerbosityFields {
+            filerefine::OptionnalFields {
+                options: filerefine::OptionsFields { dry_run: false },
+                verbosity: filerefine::VerbosityFields {
                     verbose: true,
                     json: false,
                     json_pretty: false,
                     json_error: false,
                 },
             },
-            detox::OptionnalFields {
-                options: detox::OptionsFields { dry_run: true },
-                verbosity: detox::VerbosityFields {
+            filerefine::OptionnalFields {
+                options: filerefine::OptionsFields { dry_run: true },
+                verbosity: filerefine::VerbosityFields {
                     verbose: true,
                     json: false,
                     json_pretty: false,
                     json_error: false,
                 },
             },
-            detox::OptionnalFields {
-                options: detox::OptionsFields { dry_run: true },
-                verbosity: detox::VerbosityFields {
+            filerefine::OptionnalFields {
+                options: filerefine::OptionsFields { dry_run: true },
+                verbosity: filerefine::VerbosityFields {
                     verbose: false,
                     json: true,
                     json_pretty: false,
                     json_error: false,
                 },
             },
-            detox::OptionnalFields {
-                options: detox::OptionsFields { dry_run: true },
-                verbosity: detox::VerbosityFields {
+            filerefine::OptionnalFields {
+                options: filerefine::OptionsFields { dry_run: true },
+                verbosity: filerefine::VerbosityFields {
                     verbose: false,
                     json: true,
                     json_pretty: false,
                     json_error: true,
                 },
             },
-            detox::OptionnalFields {
-                options: detox::OptionsFields { dry_run: true },
-                verbosity: detox::VerbosityFields {
+            filerefine::OptionnalFields {
+                options: filerefine::OptionsFields { dry_run: true },
+                verbosity: filerefine::VerbosityFields {
                     verbose: false,
                     json: true,
                     json_pretty: true,
                     json_error: false,
                 },
             },
-            detox::OptionnalFields {
-                options: detox::OptionsFields { dry_run: true },
-                verbosity: detox::VerbosityFields {
+            filerefine::OptionnalFields {
+                options: filerefine::OptionsFields { dry_run: true },
+                verbosity: filerefine::VerbosityFields {
                     verbose: false,
                     json: false,
                     json_pretty: false,
@@ -62,8 +62,8 @@ mod tests {
         ];
         for options in args.iter() {
             let paths_to_check = vec![PathBuf::from("README.md")];
-            let final_res = detox::detox(options, paths_to_check);
-            detox::print_output(&options.verbosity, final_res).unwrap();
+            let final_res = filerefine::filerefine(options, paths_to_check);
+            filerefine::print_output(&options.verbosity, final_res).unwrap();
         }
     }
 
@@ -94,9 +94,9 @@ mod tests {
 
     #[test]
     fn test_print_output_verbose_dry() {
-        let options = detox::OptionnalFields {
-            options: detox::OptionsFields { dry_run: true },
-            verbosity: detox::VerbosityFields {
+        let options = filerefine::OptionnalFields {
+            options: filerefine::OptionsFields { dry_run: true },
+            verbosity: filerefine::VerbosityFields {
                 verbose: true,
                 json: false,
                 json_pretty: false,
@@ -112,8 +112,8 @@ mod tests {
             to_correct.clone(),
             read_only.clone(),
         ];
-        let final_res = detox::detox(&options, paths_to_check);
-        detox::print_output(&options.verbosity, final_res).unwrap();
+        let final_res = filerefine::filerefine(&options, paths_to_check);
+        filerefine::print_output(&options.verbosity, final_res).unwrap();
 
         // cleanup
         cleanup(&to_correct, &read_only);
@@ -121,9 +121,9 @@ mod tests {
 
     #[test]
     fn test_print_output_verbose_real() {
-        let options = detox::OptionnalFields {
-            options: detox::OptionsFields { dry_run: false },
-            verbosity: detox::VerbosityFields {
+        let options = filerefine::OptionnalFields {
+            options: filerefine::OptionsFields { dry_run: false },
+            verbosity: filerefine::VerbosityFields {
                 verbose: true,
                 json: false,
                 json_pretty: false,
@@ -139,8 +139,8 @@ mod tests {
             to_correct.clone(),
             read_only.clone(),
         ];
-        let final_res = detox::detox(&options, paths_to_check);
-        detox::print_output(&options.verbosity, final_res).unwrap();
+        let final_res = filerefine::filerefine(&options, paths_to_check);
+        filerefine::print_output(&options.verbosity, final_res).unwrap();
 
         // cleanup
         cleanup(&PathBuf::from("tes_t_verbose.txt"), &read_only);
@@ -148,9 +148,9 @@ mod tests {
 
     #[test]
     fn test_print_output_json_real() {
-        let options = detox::OptionnalFields {
-            options: detox::OptionsFields { dry_run: false },
-            verbosity: detox::VerbosityFields {
+        let options = filerefine::OptionnalFields {
+            options: filerefine::OptionsFields { dry_run: false },
+            verbosity: filerefine::VerbosityFields {
                 verbose: false,
                 json: true,
                 json_pretty: false,
@@ -166,8 +166,8 @@ mod tests {
             to_correct.clone(),
             read_only.clone(),
         ];
-        let final_res = detox::detox(&options, paths_to_check);
-        detox::print_output(&options.verbosity, final_res).unwrap();
+        let final_res = filerefine::filerefine(&options, paths_to_check);
+        filerefine::print_output(&options.verbosity, final_res).unwrap();
 
         // cleanup
         cleanup(&PathBuf::from("tes_t_json.txt"), &read_only);
@@ -175,9 +175,9 @@ mod tests {
 
     #[test]
     fn test_print_output_json_error_real() {
-        let options = detox::OptionnalFields {
-            options: detox::OptionsFields { dry_run: false },
-            verbosity: detox::VerbosityFields {
+        let options = filerefine::OptionnalFields {
+            options: filerefine::OptionsFields { dry_run: false },
+            verbosity: filerefine::VerbosityFields {
                 verbose: false,
                 json: true,
                 json_pretty: false,
@@ -193,8 +193,8 @@ mod tests {
             to_correct.clone(),
             read_only.clone(),
         ];
-        let final_res = detox::detox(&options, paths_to_check);
-        detox::print_output(&options.verbosity, final_res).unwrap();
+        let final_res = filerefine::filerefine(&options, paths_to_check);
+        filerefine::print_output(&options.verbosity, final_res).unwrap();
 
         // cleanup
         cleanup(&PathBuf::from("tes_t_json_error.txt"), &read_only)
@@ -202,9 +202,9 @@ mod tests {
 
     #[test]
     fn test_print_output_json_error_dry() {
-        let options = detox::OptionnalFields {
-            options: detox::OptionsFields { dry_run: true },
-            verbosity: detox::VerbosityFields {
+        let options = filerefine::OptionnalFields {
+            options: filerefine::OptionsFields { dry_run: true },
+            verbosity: filerefine::VerbosityFields {
                 verbose: false,
                 json: true,
                 json_pretty: false,
@@ -220,8 +220,8 @@ mod tests {
             to_correct.clone(),
             read_only.clone(),
         ];
-        let final_res = detox::detox(&options, paths_to_check);
-        detox::print_output(&options.verbosity, final_res).unwrap();
+        let final_res = filerefine::filerefine(&options, paths_to_check);
+        filerefine::print_output(&options.verbosity, final_res).unwrap();
 
         // cleanup
         cleanup(&to_correct, &read_only)

@@ -6,7 +6,7 @@ mod tests {
 
     #[test]
     fn test_main_wrong_path() {
-        let mut cmd = Command::cargo_bin("detox").unwrap();
+        let mut cmd = Command::cargo_bin("filerefine").unwrap();
 
         cmd.arg("READ ME.md");
         cmd.assert()
@@ -15,7 +15,7 @@ mod tests {
 
     #[test]
     fn test_main_normal() {
-        let mut cmd = Command::cargo_bin("detox").unwrap();
+        let mut cmd = Command::cargo_bin("filerefine").unwrap();
 
         cmd.arg("README.md");
         cmd.assert()
@@ -24,7 +24,7 @@ mod tests {
 
     #[test]
     fn test_main_quiet() {
-        let mut cmd = Command::cargo_bin("detox").unwrap();
+        let mut cmd = Command::cargo_bin("filerefine").unwrap();
 
         cmd.arg("README.md").arg("-q");
         cmd.assert().stdout(predicate::str::is_empty());
@@ -32,11 +32,11 @@ mod tests {
 
     #[test]
     fn test_main_version() {
-        let mut cmd = Command::cargo_bin("detox").unwrap();
+        let mut cmd = Command::cargo_bin("filerefine").unwrap();
 
         cmd.arg("README.md").arg("-v");
         cmd.assert()
             .failure()
-            .stdout(predicate::str::contains("detox"));
+            .stdout(predicate::str::contains("filerefine"));
     }
 }

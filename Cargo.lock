@@ -50,16 +50,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "detox"
-version = "0.1.0"
-dependencies = [
- "assert_cmd",
- "predicates",
- "serde",
- "serde_json",
-]
-
-[[package]]
 name = "difflib"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -70,6 +60,16 @@ name = "doc-comment"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fea41bba32d969b513997752735605054bc0dfa92b4c56bf1189f2e174be7a10"
+
+[[package]]
+name = "filerefine"
+version = "0.1.1"
+dependencies = [
+ "assert_cmd",
+ "predicates",
+ "serde",
+ "serde_json",
+]
 
 [[package]]
 name = "float-cmp"

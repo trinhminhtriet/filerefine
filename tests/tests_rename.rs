@@ -1,9 +1,9 @@
 #[cfg(test)]
 mod tests {
     use std::path::PathBuf;
-    const TESTS_FIELDS_NOT_DRY_RUN: detox::OptionnalFields = detox::OptionnalFields {
-        options: detox::OptionsFields { dry_run: false },
-        verbosity: detox::VerbosityFields {
+    const TESTS_FIELDS_NOT_DRY_RUN: filerefine::OptionnalFields = filerefine::OptionnalFields {
+        options: filerefine::OptionsFields { dry_run: false },
+        verbosity: filerefine::VerbosityFields {
             verbose: false,
             json: false,
             json_pretty: false,
@@ -13,7 +13,7 @@ mod tests {
 
     #[test]
     fn no_rename() {
-        let res = detox::detox(
+        let res = filerefine::filerefine(
             &TESTS_FIELDS_NOT_DRY_RUN,
             vec![PathBuf::from("my_file").into()],
         );
@@ -25,7 +25,7 @@ mod tests {
     #[test]
     fn rename() {
         let path = PathBuf::from("my?..file");
-        let res = detox::detox(&TESTS_FIELDS_NOT_DRY_RUN, vec![path.clone().into()]);
+        let res = filerefine::filerefine(&TESTS_FIELDS_NOT_DRY_RUN, vec![path.clone().into()]);
         assert_eq!(res.len(), 1);
         assert_eq!(res[0].path, path);
         assert_eq!(res[0].modified, Some(PathBuf::from("my_..file")));
@@ -73,7 +73,7 @@ mod tests {
             let path_to_test = PathBuf::from(one_test.0);
             let result_to_test = PathBuf::from(one_test.1);
             print!("Testing: {:?} -> {:?}\n", path_to_test, result_to_test);
-            let res = detox::detox(&TESTS_FIELDS_NOT_DRY_RUN, vec![path_to_test.clone().into()]);
+            let res = filerefine::filerefine(&TESTS_FIELDS_NOT_DRY_RUN, vec![path_to_test.clone().into()]);
             assert_eq!(res.len(), 1);
             assert_eq!(res[0].path, path_to_test.to_owned());
             assert_eq!(res[0].modified, Some(result_to_test));
@@ -97,7 +97,7 @@ mod tests {
         for one_test in paths.iter() {
             let path_to_test = PathBuf::from(one_test);
             print!("Testing: {:?}\n", path_to_test);
-            let res = detox::detox(&TESTS_FIELDS_NOT_DRY_RUN, vec![path_to_test.clone().into()]);
+            let res = filerefine::filerefine(&TESTS_FIELDS_NOT_DRY_RUN, vec![path_to_test.clone().into()]);
             assert_eq!(res.len(), 1);
             assert_eq!(res[0].path, path_to_test.to_owned());
             assert_eq!(res[0].modified, None);
@@ -112,7 +112,7 @@ mod tests {
         }
         let unicode_char = unicode_char.unwrap();
         let utf8_bytes: Vec<u8> = unicode_char.to_string().into_bytes();
-        detox::check_similar(utf8_bytes, &mut acc, false);
+        filerefine::check_similar(utf8_bytes, &mut acc, false);
         if acc == "_" {
             return (false, acc);
         }
@@ -171,7 +171,7 @@ mod tests {
                 index,
                 options.escape_unicode()
             );
-            let res = detox::detox(&TESTS_FIELDS_NOT_DRY_RUN, vec![path_to_test.clone().into()]);
+            let res = filerefine::filerefine(&TESTS_FIELDS_NOT_DRY_RUN, vec![path_to_test.clone().into()]);
             assert_eq!(res.len(), 1);
             assert_eq!(res[0].path, path_to_test.to_owned());
             assert_eq!(res[0].modified, correct_path);

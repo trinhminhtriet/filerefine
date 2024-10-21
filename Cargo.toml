@@ -1,18 +1,18 @@
 [package]
-name = "detox"
-version = "0.1.0"
+name = "filerefine"
+version = "0.1.1"
 authors = ["Triet Trinh <contact@trinhminhtriet.com>"]
 categories = ["command-line-utilities"]
 edition = "2021"
-description = "🧹 Detox is a Rust-based CLI tool that renames files in a directory to remove unwanted or problematic characters from filenames."
+description = "🧹 FileRefine is a Rust-based CLI tool that renames files in a directory to remove unwanted or problematic characters from filenames."
 license = "MIT"
 homepage = "https://trinhminhtriet.com/"
-repository = "https://github.com/trinhminhtriet/detox"
+repository = "https://github.com/trinhminhtriet/filerefine"
 keywords = ["clean", "filename", "file", "filesystem", "tool"]
 
 
 [[bin]]
-name = "detox"
+name = "filerefine"
 path = "src/main.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
