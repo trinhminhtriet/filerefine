@@ -1,6 +1,6 @@
 [package]
 name = "filerefine"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Triet Trinh <contact@trinhminhtriet.com>"]
 categories = ["command-line-utilities"]
 edition = "2021"
