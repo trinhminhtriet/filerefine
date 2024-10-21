@@ -4,7 +4,7 @@
 
 ## 🚀 Installation
 
-To install **filerefine**, simply clone the repository and follow the instructions below:
+To install `filerefine`, simply clone the repository and follow the instructions below:
 
 ```sh
 git clone https://github.com/trinhminhtriet/filerefine.git
@@ -13,6 +13,12 @@ cd filerefine
 cargo install --path .
 
 filerefine --do my_path
+```
+
+Running the below command will globally install the `filerefine` binary.
+
+```bash
+cargo install filerefine
 ```
 
 > By default, filerefine will only print the names that would be renamed. Use the `--do` or `-d` option to actually rename the files.
