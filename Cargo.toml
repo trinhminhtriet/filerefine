@@ -28,3 +28,6 @@ serde = ["dep:serde", "dep:serde_json"]
 [dev-dependencies]
 assert_cmd = "2.0.16"
 predicates = "3.1.2"
+
+[profile.release]
+lto = true
